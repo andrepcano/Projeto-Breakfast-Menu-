@@ -12,7 +12,16 @@ acompanhamentos = {1: "Mel",
                    2: "Manteiga",
                    3: "Ketchup",
                    4: "Mostarda",
-                   5: "Maionese"}
+                   5: "Maionese",
+                   6: "Frutas"}
+
+
+#Lista bebidas
+bebidas_cafe = {1: "Coca-Cola",
+           2: "Fanta",
+           3: "Café",
+           4: "Suco de Laranja",
+           5: "Suco de Uva"}
 
 def exibir_opcoes():
     print("Qual a escolha para o café da manha: \n")
@@ -22,21 +31,49 @@ def exibir_opcoes():
         print("{} - {}".format(numero, item['nome']))
 
 
-def acomp():
+def acomp(pedido):
     escolha_acomp = input("Deseja acompanhamento?, (Sim) ou (Não)?: ").lower()
 
-    if escolha_acomp == "sim":
+    if escolha_acomp == "sim" or escolha_acomp == "s":
         print("Qual acompanhamento deseja?: ")
         for chave, valor in acompanhamentos.items():
             print("{} - {}".format(chave, valor))
-        opcao = int(input("Digite o número da opção: "))
-        if opcao in acompanhamentos:
-                print("Você escolheu Ovos com {}!".format(acompanhamentos[opcao]))
+        opcao_acomp = int(input("Digite o número da opção: "))
+        if opcao_acomp in acompanhamentos:
+                acompanhamento = acompanhamentos[opcao_acomp]
+                print("Você escolheu {} com {}!".format(pedido, acompanhamento))
+                bebidas(pedido, acompanhamento)
         else:
             opcao_invalida()
     else:
         print("Sem Acompanhamento!")
+        bebidas(pedido, None)
         
+
+def bebidas(pedido, acompanhamento):
+    escolha_bebidas = input("Deseja alguma bebida?, (Sim) ou (Não): ").lower()
+    
+    if escolha_bebidas == "sim" or escolha_bebidas == "s":
+        print("Qual bebida deseja: ")
+        for chave, valor in bebidas_cafe.items():
+            print("{} - {}".format(chave, valor))
+        opcao_bebidas = int(input("Digite o número da bebida escolhida: "))
+        if opcao_bebidas in bebidas_cafe:
+            bebida = bebidas_cafe[opcao_bebidas]
+            if acompanhamento:
+                print("Pedido final: {} com {} e {}".format(pedido, acompanhamento, bebida))
+            else:
+                print("Pedido final: {} e {}".format(pedido, bebida))
+        else:
+            opcao_invalida()
+    else:
+        if acompanhamento:
+            print("Pedido final: {} com {}".format(pedido, acompanhamento))
+        else:
+            print("Pedido final: {}".format(pedido))
+
+
+
 def ovos():
     print("Você escolheu Ovos!")
 
@@ -60,7 +97,6 @@ def voltar_menu_inicial():
 
 def opcao_invalida():
     print("Opção Inválida!")
-    voltar_menu_inicial()
 
 
 def escolher_opcoes():
@@ -68,23 +104,29 @@ def escolher_opcoes():
         escolha = int(input("Escolha uma das opções: "))
 
         if escolha == 1:
+            pedido = "Ovos"
             ovos()
-            acomp()
+            acomp(pedido)
             voltar_menu_inicial()
         elif escolha == 2:
+            pedido = "Panquecas"
             panquecas()
-            acomp()
+            acomp(pedido)
             voltar_menu_inicial()
         elif escolha == 3:
+             pedido = "Wafles"
              wafles()
-             acomp()
+             acomp(pedido)
              voltar_menu_inicial()
         elif escolha == 4:
+             pedido = "Frutas"
              frutas()
-        else:
-             opcao_invalida
+             acomp(pedido)
              voltar_menu_inicial()
-    except:
+        else:
+             opcao_invalida()
+             voltar_menu_inicial()
+    except ValueError:
          opcao_invalida()
 
 

@@ -4,7 +4,11 @@ import os
 menu_cafe = [{'nome': 'Ovos'},
                 {'nome': 'Panquecas'},
                 {'nome': 'Wafles'},
-                {'nome': 'Frutas'}]
+                {'nome': 'Frutas'},
+                {'nome': 'Pão'},
+                {'nome': 'Cereal'},
+                {'nome': 'Torradas'},
+                {'nome': 'Misto quente'}]
 
 
 #dicionário de acompanhamentos
@@ -13,7 +17,9 @@ acompanhamentos = {1: "Mel",
                    3: "Ketchup",
                    4: "Mostarda",
                    5: "Maionese",
-                   6: "Frutas"}
+                   6: "Frutas",
+                   7: "Nutella",
+                   8: "Geleia de Morango"}
 
 
 #Lista bebidas
@@ -21,7 +27,10 @@ bebidas_cafe = {1: "Coca-Cola",
            2: "Fanta",
            3: "Café",
            4: "Suco de Laranja",
-           5: "Suco de Uva"}
+           5: "Suco de Uva",
+           6: "Limonada",
+           7: "Água",
+           8: "Leite com Achocolatado"}
 
 def exibir_opcoes():
     print("Qual a escolha para o café da manha: \n")
@@ -77,18 +86,26 @@ def bebidas(pedido, acompanhamento):
 def ovos():
     print("Você escolheu Ovos!")
 
-
 def panquecas():
      print("Você escolheu Panquecas!")
-
 
 def wafles():
      print("Você escolheu Wafles!")
 
-
 def frutas():
      print("Você escolheu Frutas!")
 
+def pao():
+    print("Você escolheu Pão")
+
+def cereal():
+    print("Você escolheu Cereal!")
+
+def torradas():
+    print("Você escolheu Torradas!")
+
+def mistoquente():
+    print("Você escolheu Misto quente!")
 
 def voltar_menu_inicial():
     input("\nDigíte uma tecla para voltar ao menu inicial: ")
@@ -108,24 +125,53 @@ def escolher_opcoes():
             ovos()
             acomp(pedido)
             voltar_menu_inicial()
+
         elif escolha == 2:
             pedido = "Panquecas"
             panquecas()
             acomp(pedido)
             voltar_menu_inicial()
+
         elif escolha == 3:
-             pedido = "Wafles"
-             wafles()
-             acomp(pedido)
-             voltar_menu_inicial()
+            pedido = "Wafles"
+            wafles()
+            acomp(pedido)
+            voltar_menu_inicial()
+
         elif escolha == 4:
-             pedido = "Frutas"
-             frutas()
-             acomp(pedido)
-             voltar_menu_inicial()
+            pedido = "Frutas"
+            frutas()
+            acomp(pedido)
+            voltar_menu_inicial()
+
+        elif escolha == 5:
+            pedido = "Pão"
+            pao()
+            acomp(pedido)
+            voltar_menu_inicial()
+
+        elif escolha == 6:
+            pedido = "Cereal"
+            cereal()
+            acomp(pedido)
+            voltar_menu_inicial()
+
+        elif escolha == 7:
+            pedido = "Torradas"
+            torradas()
+            acomp(pedido)
+            voltar_menu_inicial()
+
+        elif escolha == 8:
+            pedido = "Misto quente"
+            mistoquente()
+            acomp(pedido)
+            voltar_menu_inicial()
+
         else:
              opcao_invalida()
              voltar_menu_inicial()
+
     except ValueError:
          opcao_invalida()
 
